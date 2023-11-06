@@ -1,0 +1,23 @@
+#+TITLE: Tracking Changes to the program for viewing Mandelbrot images
+
+<2023-10-14 Sat> Code taken from fyne/v2 example-develop directory
+
+<2023-10-14 Sat> Modified to scale and position the Mandelbrot image
+
+<2023-10-18 Wed> Added the ability to produce a jpeg file of the current Mandelbrot image. The jpg has a 4k resolution. I had great difficulty in modifying the metadata in a jpeg file using go.  Finally I found the article "Modifying EXIF metadata" by KlienC (https://medium.com/@kleinc./modifying-exif-metadata-with-go-268c22bf654e) that provided the solution
+
+<2023-10-20 Fri> Added a customized encode method to the struct MandelData in util.go. The encoder will improve the resolution of the json representation of the float64 variables in the struct. 
+
+<2023-10-21 Sat> Started a program manMovie.go that will eventually read the Fractal data from a jpg and produce a movie of that jpg. The fps will be defined as a constant. The starting position for the movie will be the position of Fractal when scale is 1. The length of the move clip is set and based in it and the fps the number of frames, n, will be determined. The scale increment, si, becomes si = scale/n. The frames are then calculated starting at the surface or starting point and burrowing down to when the scale is reached. The scale of the frame is reduced by si for each frame calulated. 
+
+<2023-11-05 Sun> Instructions
+
+Up/Down arrows--move the image Up/Down
+
+Left/Rignt arrows--move the image Left/Right 
+
++/- --zooms in/out
+
+s -- reset image to the initial settings
+
+p -- write current image to disk as a jpeg.
